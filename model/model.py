@@ -17,19 +17,11 @@ class MovieReviewSentimentAnalysis:
         """
         self.dataset = pd.read_csv(dataset_path)
 
-    def train_naive_bayes(self):
+    def fit_naive_bayes(self, x_train, y_train):
         """
         Train Naive Bayes classifier
         """
         self.nb_classifier = MultinomialNB()
-        self.nb_classifier.fit(self.X_train, self.y_train)
-        
-        # Predictions
-        nb_predictions = self.nb_classifier.predict(self.X_test)
-        
-        print("Naive Bayes Classifier Performance:")
-        print(classification_report(self.y_test, nb_predictions))
-        
-        return nb_predictions
+        self.nb_classifier.fit(x_train, y_train)
     
     
