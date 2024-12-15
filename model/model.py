@@ -39,7 +39,36 @@ class MovieReviewSentimentAnalysis:
         self.lr_classifier = LogisticRegression(max_iter=1000)
         self.lr_classifier.fit(self.X_train, self.y_train)
     
+    def __predicit_naive_bayes(self, x_test, y_test):
+        """
+        Predict using Naive Bayes classifier
+        """
+        y_pred = self.nb_classifier.predict(x_test)
+        print("Naive Bayes")
+        print("Accuracy: ", accuracy_score(y_test, y_pred))
+        print("Classification Report: ", classification_report(y_test, y_pred))
+        cm = confusion_matrix(y_test, y_pred)
+        sns.heatmap(cm, annot=True)
+        plt.show()
     
+    def __predict_logistic_regression(self, x_test, y_test):
+        """
+        Predict using Logistic Regression classifier
+        """
+        y_pred = self.lr_classifier.predict(x_test)
+        print("Logistic Regression")
+        print("Accuracy: ", accuracy_score(y_test, y_pred))
+        print("Classification Report: ", classification_report(y_test, y_pred))
+        cm = confusion_matrix(y_test, y_pred)
+        sns.heatmap(cm, annot=True)
+        plt.show()
     
+    def evaluate(self, x_test, y_test):
+        """
+        Evaluate the sentiment analysis model
+        """
+        self.__predicit_naive_bayes(x_test, y_test)
+        self.__predict_logistic_regression(x_test, y_test)
+        
     
     
