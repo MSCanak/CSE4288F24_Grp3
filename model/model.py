@@ -56,6 +56,6 @@ class MovieReviewSentimentAnalysis:
         self.__predict_logistic_regression()
 
 
-a = MovieReviewSentimentAnalysis("data/cleaned_IMDB_dataset.csv")
+a = MovieReviewSentimentAnalysis("../data/cleaned_IMDB_dataset.csv")
 a.train()
 a.evaluate()
